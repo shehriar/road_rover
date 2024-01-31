@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ScrollService } from '../services/scroll.service';
 

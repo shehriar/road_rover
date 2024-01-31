@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { ApiService } from 'src/app/api.service';
 
 
 @Component({
@@ -14,9 +15,11 @@ export class AutocompleteSearchComponent implements OnInit{
   title = 'Autocomplete Search';
   pickupLocationForm!: FormGroup;
   pickupLocation!: FormControl;
-  allLocations: string[] = ['New York', 'Los Angeles', 'Chicago', 'Houston']; // Add more locations
   filteredOptions!: Observable<string[]>;
   @Input() label:string = '';
+  allLocations!: string[];
+
+  constructor(private apiService: ApiService){};
 
   ngOnInit() {
     this.pickupLocation = new FormControl();
@@ -28,6 +31,19 @@ export class AutocompleteSearchComponent implements OnInit{
       startWith(''),
       map(value => this._filter(value))
     );
+
+    this.apiService.getLocations().subscribe({
+      next: (response) => {
+        this.allLocations = response.locations.map((loc: any) => `${loc.locationcity}, ${loc.locationcountry}`);
+        this.filteredOptions = this.pickupLocation.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
+      },
+      error: (err) => {
+        console.error('Error fetching locations:', err);
+      }
+    }); 
   }
 
   private _filter(value: string): string[] {
