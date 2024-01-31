@@ -1,0 +1,28 @@
+.center-row{
+    display: flex;
+    justify-content: center;
+}
+
+.left-row{
+    display: flex;
+    justify-content: left;
+}
+
+.left-row app-date-picker{
+    margin-left: 19.8%;
+}
+
+.left-row button{
+    width: 200px;
+    height: 60px;
+    margin-top: 0%;
+    border-color: white;
+    background-color: rgb(75, 201, 75);
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    font-size: large;
+    
+    /* margin-left: 2%; */
+}

@@ -1,0 +1,17 @@
+.team-picture{
+    width: 300px;
+    height: 400px;
+    margin-left: 40%;
+}
+
+.team-picture img{
+    margin-top: 15%;
+}
+
+.main{
+    width: 95%;
+    height: auto;
+    background-color: rgb(232, 232, 232);
+    border-radius: 10px;
+    margin-left: 2.5%;
+}
