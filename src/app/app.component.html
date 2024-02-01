@@ -1,13 +1,5 @@
 <div class = "top-page">
-  <img src="assets/logo.png">
-  <h1>{{message.message}}</h1>
-  <div class = "top-page-buttons">
-    <button (click) = "onHomeClick()">Home</button>
-    <button (click) = "onCarListClick()">Vehicle Models</button>
-    <button (click) = "onAboutClick()">About</button>
-    <button (click) = "onOurTeamClick()">Our Team</button>
-    <button (click) = "onContactClick()">Contact</button>
-  </div>
+  <img src="assets/logo.png" (click)="clickButton('home')">
 </div>
 
 <main id = "content">

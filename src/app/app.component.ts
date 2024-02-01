@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'car-renting';
   constructor(private router: Router, private scrollService: ScrollService, private apiService: ApiService) {}
 
@@ -31,10 +31,7 @@ export class AppComponent implements OnInit {
     this.scrollService.scrollToCarList();
   }
 
-  message: any; 
-  ngOnInit() { 
-      this.apiService.getMessage().subscribe(data => { 
-          this.message = data; 
-      }); 
+  clickButton(path: string) {
+    this.router.navigateByUrl(path);
   } 
 }

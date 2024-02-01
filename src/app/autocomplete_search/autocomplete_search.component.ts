@@ -34,7 +34,7 @@ export class AutocompleteSearchComponent implements OnInit{
 
     this.apiService.getLocations().subscribe({
       next: (response) => {
-        this.allLocations = response.locations.map((loc: any) => `${loc.locationcity}, ${loc.locationcountry}`);
+        this.allLocations = response.locations.map((loc: any) => `${loc.locationcity}, ${loc.locationstate}`);
         this.filteredOptions = this.pickupLocation.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value))

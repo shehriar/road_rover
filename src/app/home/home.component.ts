@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild} from '@angular/core';
 import { ScrollService } from '../services/scroll.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { ScrollService } from '../services/scroll.service';
 })
 export class HomeComponent {
   title = 'Home';
-  constructor(private scrollService: ScrollService) {}
+  constructor(private router: Router, private scrollService: ScrollService) {}
 
   @ViewChild('homeComponent', { static: false }) homeComponent!: ElementRef;
 
@@ -21,5 +22,24 @@ export class HomeComponent {
     this.scrollService.scrollToHomeObservable.subscribe(() => {
       this.homeComponent.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  }
+
+  onHomeClick() {
+    this.scrollService.scrollToHome();
+  }
+
+  onAboutClick(){
+    this.scrollService.scrollToAbout();
+  }
+
+  onOurTeamClick(){
+    this.scrollService.scrollToOurTeam();
+  }
+
+  onContactClick(){
+    this.scrollService.scrollToContact();
+  }
+  onCarListClick(){
+    this.scrollService.scrollToCarList();
   }
 }

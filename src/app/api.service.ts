@@ -16,4 +16,10 @@ export class ApiService {
             'http://localhost:3000/api/locations'
         )
     }
+
+    getAllCarModels():Observable<any>{
+        return this.http.get(
+            'http://localhost:3000/api/vehicle_models'
+        )
+    }
 }

@@ -20,6 +20,7 @@ import { CarListComponent } from './car_list_on_home/car_list.component';
 import { AboutComponent } from './about/about.component';
 import { OurTeamComponent } from './our_team/our_team.component';
 import { ContactComponent } from './contact/contact.component';
+import { AllCarsComponent } from './all_cars/all_cars.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContactComponent } from './contact/contact.component';
     CarListComponent,
     AboutComponent,
     OurTeamComponent,
-    ContactComponent
+    ContactComponent,
+    AllCarsComponent
   ],
   imports: [
     BrowserModule,
