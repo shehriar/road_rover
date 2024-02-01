@@ -20,10 +20,6 @@ export class AppComponent {
     this.scrollService.scrollToAbout();
   }
 
-  onOurTeamClick(){
-    this.scrollService.scrollToOurTeam();
-  }
-
   onContactClick(){
     this.scrollService.scrollToContact();
   }

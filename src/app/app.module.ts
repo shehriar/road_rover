@@ -18,7 +18,6 @@ import { AutocompleteSearchComponent } from './autocomplete_search/autocomplete_
 import { DatePickerComponent } from './date_picker/date_picker.component';
 import { CarListComponent } from './car_list_on_home/car_list.component';
 import { AboutComponent } from './about/about.component';
-import { OurTeamComponent } from './our_team/our_team.component';
 import { ContactComponent } from './contact/contact.component';
 import { AllCarsComponent } from './all_cars/all_cars.component';
 
@@ -31,7 +30,6 @@ import { AllCarsComponent } from './all_cars/all_cars.component';
     DatePickerComponent,
     CarListComponent,
     AboutComponent,
-    OurTeamComponent,
     ContactComponent,
     AllCarsComponent
   ],

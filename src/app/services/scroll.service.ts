@@ -25,13 +25,6 @@ export class ScrollService {
   scrollToAbout(){
     this.scrollToAboutSource.next();
   }
-  
-  private scrollToOurTeamSource = new Subject<void>();
-  scrollToOurTeamObservable = this.scrollToOurTeamSource.asObservable();
-
-  scrollToOurTeam(){
-    this.scrollToOurTeamSource.next();
-  }
 
   private scrollToContactSource = new Subject<void>();
   scrollToContactObservable = this.scrollToContactSource.asObservable();

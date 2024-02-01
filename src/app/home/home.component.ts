@@ -32,10 +32,6 @@ export class HomeComponent {
     this.scrollService.scrollToAbout();
   }
 
-  onOurTeamClick(){
-    this.scrollService.scrollToOurTeam();
-  }
-
   onContactClick(){
     this.scrollService.scrollToContact();
   }
