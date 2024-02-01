@@ -1,8 +1,13 @@
 
 <h1> {{pickupCity}}, {{dropoffCity}} </h1>
 <div class="car-list-grp" #carListComponent>
-    <div *ngFor="let car of allCarModels">
+    <div *ngFor="let vehicle of allVehiclesFromPickupCity">
+        <img src = "assets/all_cars/{{vehicle.vehiclemodel}}.png">
+        <h3>{{vehicle.vehiclemake}}</h3>
+        <h3>{{vehicle.vehiclemodel}} ({{vehicle.vehicleyear}})</h3>
+    </div>
+    <!-- <div *ngFor="let car of allCarModels">
         <img src='assets/all_cars/{{car}}.png'>
         <h3>{{car}}</h3>
-    </div>
+    </div> -->
 </div>

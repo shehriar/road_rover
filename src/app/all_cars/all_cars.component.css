@@ -1,10 +1,10 @@
 .car-list-grp {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     justify-content: center; /* Center items horizontally */
     width: 95%;
     margin-left: 2.5%;
-    background-color: rgb(232, 232, 232);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
 }
 
@@ -12,14 +12,20 @@
     margin-top: 7%;
     height: auto;
     width: 225px;
+    margin-bottom: 10%;
 }
 
 .car-list-grp div{
     width: 225px;
     height: 180px;
-    background-color: transparent;
+    background-color: rgb(228, 228, 228);
     margin-top: 15%;
     /* margin-bottom: 5%; */
     margin-left: 10%;
     border-radius: 15px;
+    text-align: center;
+}
+
+.car-list-grp h3{
+    margin: 0;
 }
