@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
+import { LocationService } from '../location.service';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { ApiService } from 'src/app/api.service';
 
 export class AllCarsComponent implements OnInit{
     title = 'Autocomplete Search';
-    constructor(private apiService: ApiService){};
+    constructor(private apiService: ApiService, private locationService: LocationService){};
 
     allCarModels!: string[];
+    pickupCity!: string;
+    dropoffCity!: string;
 
     ngOnInit() {
         this.apiService.getAllCarModels().subscribe({
@@ -23,5 +26,7 @@ export class AllCarsComponent implements OnInit{
                 console.error('Error fetching locations:', err);
             }
         })
+        this.pickupCity = this.locationService.getPickupLocation();
+        this.dropoffCity = this.locationService.getDropoffLocation();
     }
 }
