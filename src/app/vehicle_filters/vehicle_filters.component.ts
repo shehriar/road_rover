@@ -13,15 +13,27 @@ export class VehicleFiltersComponent implements OnInit{
   vehicleTypes : any;
   @Output() vehicleTypeSelected: EventEmitter<string> = new EventEmitter();
 
+  vehicleMakes : any;
+  selectedMakes : string[] = [];
+  @Output() vehicleMakesSelected: EventEmitter<string[]> = new EventEmitter();
+
+  showDropdown = false;
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+    console.log('Dropdown state:', this.showDropdown);
+  }
+
   ngOnInit(){
     this.fetchAllVehicleTypes();
+    this.fetchAllVehicleMakes();
   }
 
   onVehicleTypeChange(event : Event): void {
     const target = event.target as HTMLInputElement;
     const selectedType = target.value;
     this.vehicleTypeSelected.emit(selectedType);
-}
+  }
 
   fetchAllVehicleTypes(){
     this.apiService.getVehicleTypes().subscribe({
@@ -34,4 +46,29 @@ export class VehicleFiltersComponent implements OnInit{
       }
     })
   }
+
+  onVehicleMakesChange(event : Event, make : string): void {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+        if (!this.selectedMakes.includes(make)) {
+        this.selectedMakes.push(make);
+        }
+    } else {
+        this.selectedMakes = this.selectedMakes.filter(m => m !== make);
+    }
+    this.vehicleMakesSelected.emit(this.selectedMakes);
+  }
+
+  fetchAllVehicleMakes(){
+    this.apiService.getVehicleMakes().subscribe({
+      next: (response) => {
+        this.vehicleMakes = Object.values(response)[0];
+        console.log('Received data:', this.vehicleMakes);
+      },
+      error: (err) => {
+        console.error('Error fetching locations:', err);
+      }
+    })
+  }
+
 }

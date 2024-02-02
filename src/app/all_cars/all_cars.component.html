@@ -1,7 +1,7 @@
 
 <div class=" container" #carListComponent>
     <div class = "left-column">
-        <app-vehicle-filters (vehicleTypeSelected)="filterVehiclesByType($event)"></app-vehicle-filters>
+        <app-vehicle-filters (vehicleTypeSelected)="filterVehiclesByType($event)" (vehicleMakesSelected)="filterVehiclesByMake($event)"></app-vehicle-filters>
     </div>
     <!-- <div *ngFor="let vehicle of allVehiclesFromPickupCity">
         <img src = "assets/all_cars/{{vehicle.vehiclemodel}}.png">

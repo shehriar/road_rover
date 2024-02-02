@@ -1,0 +1,12 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.make{
+    height: 100px;
+    overflow-y: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: start;
+}
