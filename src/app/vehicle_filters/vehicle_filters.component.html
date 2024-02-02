@@ -6,7 +6,7 @@
     <form>
         <p>Vehicle Type</p>
         <select name = "Type" (change)="onVehicleTypeChange($event)">
-            <option style = "text-align: center;" value = ""> -- </option>
+            <option style = "text-align: center;" value = ""></option>
             <option *ngFor = "let type of vehicleTypes" [value] = "type.vehicletype">
                 {{type.vehicletype}}
             </option>
@@ -20,5 +20,13 @@
                 <label [for]="make.vehiclemake">{{make.vehiclemake}}</label>
             </div>
         </div>
+        <div style = "margin-bottom: 30%;"></div>
+        <p>Fuel Type</p>
+        <select name = "Fuel Type" (change)="onFuelTypeChange($event)">
+            <option style = "text-align: center;" value = ""></option>
+            <option *ngFor = "let vehicle of fuelTypes" [value] = "vehicle.fueltype">
+                {{vehicle.fueltype}}
+            </option>
+        </select>
     </form>
 </div>

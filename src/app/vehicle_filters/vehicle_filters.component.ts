@@ -13,6 +13,9 @@ export class VehicleFiltersComponent implements OnInit{
   vehicleTypes : any;
   @Output() vehicleTypeSelected: EventEmitter<string> = new EventEmitter();
 
+  fuelTypes : any;
+  @Output() fuelTypeSelected: EventEmitter<string> = new EventEmitter();
+
   vehicleMakes : any;
   selectedMakes : string[] = [];
   @Output() vehicleMakesSelected: EventEmitter<string[]> = new EventEmitter();
@@ -27,6 +30,7 @@ export class VehicleFiltersComponent implements OnInit{
   ngOnInit(){
     this.fetchAllVehicleTypes();
     this.fetchAllVehicleMakes();
+    this.fetchAllFuelTypes();
   }
 
   onVehicleTypeChange(event : Event): void {
@@ -46,6 +50,25 @@ export class VehicleFiltersComponent implements OnInit{
       }
     })
   }
+
+  onFuelTypeChange(event : Event): void {
+    const target = event.target as HTMLInputElement;
+    const selectedFuelType = target.value;
+    this.fuelTypeSelected.emit(selectedFuelType);
+  }
+
+  fetchAllFuelTypes(){
+    this.apiService.getFuelTypes().subscribe({
+      next: (response) => {
+        this.fuelTypes = Object.values(response)[0];
+        console.log('Received data:', this.fuelTypes);
+      },
+      error: (err) => {
+        console.error('Error fetching locations:', err);
+      }
+    })
+  }
+
 
   onVehicleMakesChange(event : Event, make : string): void {
     const checkbox = event.target as HTMLInputElement;

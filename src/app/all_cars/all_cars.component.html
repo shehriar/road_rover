@@ -1,7 +1,7 @@
 
 <div class=" container" #carListComponent>
     <div class = "left-column">
-        <app-vehicle-filters (vehicleTypeSelected)="filterVehiclesByType($event)" (vehicleMakesSelected)="filterVehiclesByMake($event)"></app-vehicle-filters>
+        <app-vehicle-filters (vehicleTypeSelected)="filterVehiclesByType($event)" (vehicleMakesSelected)="filterVehiclesByMake($event)" (fuelTypeSelected)="filterVehiclesByFuelType($event)"></app-vehicle-filters>
     </div>
     <!-- <div *ngFor="let vehicle of allVehiclesFromPickupCity">
         <img src = "assets/all_cars/{{vehicle.vehiclemodel}}.png">
@@ -11,8 +11,8 @@
     <div class = "car-list-grp right-column">
         <div *ngFor="let vehicle of filteredVehicles">
             <img src='assets/all_cars/{{vehicle.vehiclemodel}}.png'>
-            <h3>{{vehicle.vehiclemake}} {{vehicle.vehiclemodel}}</h3>
-            <h3>{{vehicle.vehicleyear}}</h3>
+            <h3>{{vehicle.vehiclemake}} {{vehicle.vehiclemodel}} ({{vehicle.vehicleyear}})</h3>
+            <h3>${{vehicle.ratedaily}}/Day</h3>
         </div>
     </div>
 </div>

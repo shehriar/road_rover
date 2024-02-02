@@ -23,17 +23,23 @@ export class AllCarsComponent implements OnInit{
     dropoffCity!: string;
 
     currentTypeFilter: string = '';
+    currentFuelTypeFilter: string = '';
     currentMakeFilter: string[] = [];
 
     ngOnInit() {
         this.pickupCity = this.locationService.getPickupCity();
         this.dropoffCity = this.locationService.getDropoffCity();
         this.fetchAllVehicles();
-        this.fetchAllVehicleDataFromPickupLocation();
+        // this.fetchAllVehicleDataFromPickupLocation();
     }
 
     filterVehiclesByType(selectedType: string): void {
       this.currentTypeFilter = selectedType;
+      this.applyFilters();
+    }
+
+    filterVehiclesByFuelType(selectedFuelType : string): void{
+      this.currentFuelTypeFilter = selectedFuelType;
       this.applyFilters();
     }
 
@@ -73,12 +79,14 @@ export class AllCarsComponent implements OnInit{
     applyFilters(): void {
       this.filteredVehicles = this.allVehicleModels;
 
-      // Apply type filter if a type is selected
       if (this.currentTypeFilter) {
         this.filteredVehicles = this.filteredVehicles.filter(vehicle => vehicle.vehicletype === this.currentTypeFilter);
       }
 
-      // Apply make filter if any makes are selected
+      if (this.currentFuelTypeFilter) {
+        this.filteredVehicles = this.filteredVehicles.filter(vehicle => vehicle.fuelType === this.currentFuelTypeFilter);
+      }
+
       if (this.currentMakeFilter.length > 0) {
         this.filteredVehicles = this.filteredVehicles.filter(vehicle => this.currentMakeFilter.includes(vehicle.vehiclemake));
       }

@@ -1,4 +1,5 @@
 .car-list-grp {
+    margin-top: 5%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-content: center; /* Center items horizontally */
@@ -18,12 +19,12 @@
 .car-list-grp div{
     width: 225px;
     height: 180px;
-    background-color: rgb(228, 228, 228);
-    margin-top: 15%;
-    /* margin-bottom: 5%; */
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20%;
     margin-left: 10%;
     border-radius: 15px;
     text-align: center;
+    cursor: pointer;
 }
 
 .car-list-grp h3{
@@ -36,8 +37,9 @@
 }
 
 .left-column {
+    margin-top: 30%;
     overflow: auto;
-    height: 80vh;
+    height: 70vh;
     background-color: rgb(228, 228, 228);
     /* background-color: grey; */
     border-radius: 20px;

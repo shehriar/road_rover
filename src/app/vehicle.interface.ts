@@ -1,5 +1,5 @@
 export interface Vehicle{
-    fueltype: any,
+    fuelType: any,
     rating: any,
     renterTripsTaken: any,
     reviewCount: any,

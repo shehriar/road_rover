@@ -43,4 +43,10 @@ export class ApiService {
             'http://localhost:3000/api/vehicle_makes'
         )
     }
+
+    getFuelTypes():Observable<any>{
+        return this.http.get(
+            'http://localhost:3000/api/fuel_types'
+        )
+    }
 }
