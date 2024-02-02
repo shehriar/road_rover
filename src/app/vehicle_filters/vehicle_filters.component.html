@@ -1,0 +1,14 @@
+<div #vehicleFiltersComponent>
+    <h3>Filters</h3>
+    <!-- <div *ngFor = "let type of vehicleTypes">
+        {{type.vehicletype}}
+    </div> -->
+    <form>
+        <select name = "Type" (change)="onVehicleTypeChange($event)">
+            <option style = "text-align: center;" value = ""> -- </option>
+            <option *ngFor = "let type of vehicleTypes" [value] = "type.vehicletype">
+                {{type.vehicletype}}
+            </option>
+        </select>
+    </form>
+</div>

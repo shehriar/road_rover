@@ -1,6 +1,6 @@
 .car-list-grp {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-content: center; /* Center items horizontally */
     width: 95%;
     margin-left: 2.5%;
@@ -28,4 +28,32 @@
 
 .car-list-grp h3{
     margin: 0;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.left-column {
+    overflow: auto;
+    height: 80vh;
+    background-color: rgb(228, 228, 228);
+    /* background-color: grey; */
+    border-radius: 20px;
+    margin-left: 10%;
+    border: 1px solid rgb(113, 113, 113);
+    text-align: center;
+}
+
+.right-column {
+    overflow: auto;
+    height: 80vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* background-color: grey; */
+    /* background-color: rgb(228, 228, 228); */
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }

@@ -20,6 +20,7 @@ import { CarListComponent } from './car_list_on_home/car_list.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { AllCarsComponent } from './all_cars/all_cars.component';
+import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AllCarsComponent } from './all_cars/all_cars.component';
     CarListComponent,
     AboutComponent,
     ContactComponent,
-    AllCarsComponent
+    AllCarsComponent,
+    VehicleFiltersComponent
   ],
   imports: [
     BrowserModule,

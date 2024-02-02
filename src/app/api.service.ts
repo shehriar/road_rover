@@ -31,4 +31,10 @@ export class ApiService {
             { pickupLocation: pickupLocation }
         );
     }
+
+    getVehicleTypes():Observable<any>{
+        return this.http.get(
+            'http://localhost:3000/api/vehicle_types'
+        )
+    }
 }

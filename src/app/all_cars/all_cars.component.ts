@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { LocationService } from '../location.service';
+import { Vehicle } from 'src/app/vehicle.interface';
+import { VehicleFiltersComponent } from '../vehicle_filters/vehicle_filters.component';
 import { Observable } from 'rxjs';
 
 
@@ -14,34 +16,50 @@ export class AllCarsComponent implements OnInit{
     title = 'Autocomplete Search';
     constructor(private apiService: ApiService, private locationService: LocationService){};
 
-    allCarModels!: string[];
-    allVehiclesFromPickupCity: any;
+    allVehicleModels!: Vehicle[];
+    allVehiclesFromPickupCity!: Vehicle[];
+    filteredVehicles!: Vehicle[];
     pickupCity!: string;
     dropoffCity!: string;
 
     ngOnInit() {
-        // this.apiService.getAllCarModels().subscribe({
-        //     next: (response) => {
-        //       this.allCarModels = response.vehicle_models.map((cars: any) => `${cars.vehiclemodel}`);
-        //     },
-        //     error: (err) => {
-        //         console.error('Error fetching locations:', err);
-        //     }
-        // })
         this.pickupCity = this.locationService.getPickupCity();
         this.dropoffCity = this.locationService.getDropoffCity();
+        this.fetchAllVehicles();
         this.fetchAllVehicleDataFromPickupLocation();
+    }
+
+    filterVehiclesByType(selectedType: string): void {
+      if (selectedType) {
+          this.filteredVehicles = this.allVehicleModels.filter(vehicle => vehicle.vehicletype === selectedType);
+      } else {
+          this.filteredVehicles = this.allVehicleModels;
+      }
     }
 
     fetchAllVehicleDataFromPickupLocation(){
       console.log(this.pickupCity);
       this.apiService.getVehicleDataFromPickupLocation(this.pickupCity).subscribe({
         next: (response) => {
-          console.log('Received data:', Object.values(response)[0]);
-          this.allVehiclesFromPickupCity = Object.values(response)[0];
+          // console.log('Received data:', Object.values(response)[0]);
+          this.allVehiclesFromPickupCity = Object.values(response)[0] as Vehicle[];
         },
         error: err => {
           console.error('Error getting vehicle data from pickup location:', err);
+        }
+      })
+    }
+
+    fetchAllVehicles(){
+      this.apiService.getAllCarModels().subscribe({
+        next: (response) => {
+          // console.log('Received data:', Object.values(response)[0]);
+          this.allVehicleModels = Object.values(response)[0] as Vehicle[];
+          this.filteredVehicles = this.allVehicleModels;
+          // this.allCarModels = response.vehicle_models.map((cars: any) => `${cars.vehiclemodel}`);
+        },
+        error: (err) => {
+          console.error('Error fetching locations:', err);
         }
       })
     }
