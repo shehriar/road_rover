@@ -16,22 +16,32 @@ import { VehicleSelectionService } from 'src/app/vehicle_select.service'
 
 export class AllCarsComponent implements OnInit{
     title = 'Autocomplete Search';
-    constructor(private apiService: ApiService, private locationService: LocationService, private router : Router, private vehicleSelect : VehicleSelectionService){};
-
+    pickupCitySelected!: string;
     allVehicleModels!: Vehicle[];
     allVehiclesFromPickupCity!: Vehicle[];
     filteredVehicles!: Vehicle[];
-    pickupCity!: string;
+    pickupCitySet : boolean = false;
     dropoffCity!: string;
 
     currentTypeFilter: string = '';
     currentFuelTypeFilter: string = '';
     currentMakeFilter: string[] = [];
+    constructor(private apiService: ApiService, private locationService: LocationService, private router : Router, private vehicleSelect : VehicleSelectionService){
+      this.locationService.getPickupLocationObservable().subscribe(location => {
+        this.pickupCitySelected = location.split(',')[0]; // Adjust if your format is different
+      });
+    };
+
+    
 
     ngOnInit() {
-        this.pickupCity = this.locationService.getPickupCity();
-        this.dropoffCity = this.locationService.getDropoffCity();
+        // this.dropoffCity = this.locationService.getDropoffCity();
+        // this.pickupCitySet = this.locationService.getLocationSet();
         this.fetchAllVehicles();
+        this.locationService.getPickupLocationObservable().subscribe(location => {
+          this.pickupCitySelected = location.split(',')[0]; // Adjust if your format is different
+          this.applyFilters();
+        });
         // this.fetchAllVehicleDataFromPickupLocation();
     }
 
@@ -51,14 +61,21 @@ export class AllCarsComponent implements OnInit{
     }
 
     filterVehiclesByMake(selectedMakes: string[]): void{
-      console.log('Selected makes:', selectedMakes);
+      // console.log('Selected makes:', selectedMakes);
       this.currentMakeFilter = selectedMakes;
       this.applyFilters();
     }
 
+    filterVehiclesByLocation(){
+      if(this.pickupCitySet){
+        // console.log(this.pickupCitySet)
+        this.applyFilters();
+      }
+    }
+
     fetchAllVehicleDataFromPickupLocation(){
-      console.log(this.pickupCity);
-      this.apiService.getVehicleDataFromPickupLocation(this.pickupCity).subscribe({
+      // console.log(this.pickupCitySelected);
+      this.apiService.getVehicleDataFromPickupLocation(this.pickupCitySelected).subscribe({
         next: (response) => {
           // console.log('Received data:', Object.values(response)[0]);
           this.allVehiclesFromPickupCity = Object.values(response)[0] as Vehicle[];
@@ -75,6 +92,7 @@ export class AllCarsComponent implements OnInit{
           // console.log('Received data:', Object.values(response)[0]);
           this.allVehicleModels = Object.values(response)[0] as Vehicle[];
           this.filteredVehicles = this.allVehicleModels;
+          this.applyFilters();
           // this.allCarModels = response.vehicle_models.map((cars: any) => `${cars.vehiclemodel}`);
         },
         error: (err) => {
@@ -96,6 +114,11 @@ export class AllCarsComponent implements OnInit{
 
       if (this.currentMakeFilter.length > 0) {
         this.filteredVehicles = this.filteredVehicles.filter(vehicle => this.currentMakeFilter.includes(vehicle.vehiclemake));
+      }
+
+      if(this.pickupCitySelected){
+        console.log(this.pickupCitySelected);
+        this.filteredVehicles = this.filteredVehicles.filter(vehicle => vehicle.locationcity === this.pickupCitySelected);
       }
     }
 }

@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router'; 
 import { ScrollService } from '../services/scroll.service';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-car-search',
@@ -15,13 +16,20 @@ export class SearchCarComponent{
     end: new FormControl()
   });
 
+  pickupCitySelected : string = "";
+  @Output() selectedLocation = new EventEmitter<string>();
+
   @ViewChild('searchCarComponent', { static: false }) searchCarComponent!: ElementRef;
 
-  constructor(private scrollService: ScrollService, private router: Router) {}
+  constructor(private scrollService: ScrollService, private router: Router, private locationService : LocationService) {}
 
   ngOnInit() {
     this.scrollService.scrollToCarSearchObservable.subscribe(() => {
       this.searchCarComponent.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    this.locationService.getPickupLocationObservable().subscribe(location => {
+      this.pickupCitySelected = location.split(',')[0];
     });
   }
 

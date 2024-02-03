@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../api.service';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-vehicle-filters',
@@ -8,7 +9,9 @@ import { ApiService } from '../api.service';
 })
 export class VehicleFiltersComponent implements OnInit{
   title = 'Vehicle Filters';
-  constructor(private apiService: ApiService){};
+  constructor(private apiService: ApiService, private locationService : LocationService){};
+
+  pickupCitySelected : string = "";
 
   vehicleTypes : any;
   @Output() vehicleTypeSelected: EventEmitter<string> = new EventEmitter();
@@ -20,17 +23,14 @@ export class VehicleFiltersComponent implements OnInit{
   selectedMakes : string[] = [];
   @Output() vehicleMakesSelected: EventEmitter<string[]> = new EventEmitter();
 
-  showDropdown = false;
-
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
-    console.log('Dropdown state:', this.showDropdown);
-  }
 
   ngOnInit(){
     this.fetchAllVehicleTypes();
     this.fetchAllVehicleMakes();
     this.fetchAllFuelTypes();
+    this.locationService.getPickupLocationObservable().subscribe(location => {
+      this.pickupCitySelected = location.split(',')[0];
+    });
   }
 
   onVehicleTypeChange(event : Event): void {
@@ -43,7 +43,7 @@ export class VehicleFiltersComponent implements OnInit{
     this.apiService.getVehicleTypes().subscribe({
       next: (response) => {
         this.vehicleTypes = Object.values(response)[0];
-        console.log('Received data:', this.vehicleTypes);
+        // console.log('Received data:', this.vehicleTypes);
       },
       error: (err) => {
         console.error('Error fetching locations:', err);
@@ -61,7 +61,7 @@ export class VehicleFiltersComponent implements OnInit{
     this.apiService.getFuelTypes().subscribe({
       next: (response) => {
         this.fuelTypes = Object.values(response)[0];
-        console.log('Received data:', this.fuelTypes);
+        // console.log('Received data:', this.fuelTypes);
       },
       error: (err) => {
         console.error('Error fetching locations:', err);
@@ -86,7 +86,7 @@ export class VehicleFiltersComponent implements OnInit{
     this.apiService.getVehicleMakes().subscribe({
       next: (response) => {
         this.vehicleMakes = Object.values(response)[0];
-        console.log('Received data:', this.vehicleMakes);
+        // console.log('Received data:', this.vehicleMakes);
       },
       error: (err) => {
         console.error('Error fetching locations:', err);

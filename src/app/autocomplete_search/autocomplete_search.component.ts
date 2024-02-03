@@ -36,6 +36,11 @@ export class AutocompleteSearchComponent implements OnInit{
       map(value => this._filter(value))
     );
 
+    const currentLocation = this.locationService.getCurrentPickupLocation();
+    if (currentLocation) {
+      this.pickupLocation.setValue(currentLocation);
+    }
+
     this.apiService.getLocations().subscribe({
       next: (response) => {
         this.allLocations = response.locations.map((loc: any) => `${loc.locationcity}, ${loc.locationstate}`);
@@ -51,11 +56,15 @@ export class AutocompleteSearchComponent implements OnInit{
   }
 
   updateValue(value: string){
-    if(this.locationType == 'pickup'){
-      this.locationService.setPickupLocation(value);
-    }
-    else{
-      this.locationService.setDropoffLocation(value)
+    if(value){
+      if(this.locationType == 'pickup'){
+        this.locationService.setPickupLocation(value);
+      }
+      else{
+        this.locationService.setDropoffLocation(value)
+      }
+      
+      this.selectedLocation.emit(value);
     }
   }
 

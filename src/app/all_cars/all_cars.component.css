@@ -1,3 +1,13 @@
+.vl{
+    height: 90%;
+    border: 1px solid black;
+    width: 10px;
+}
+
+.row{
+    display: flex;
+}
+
 .car-list-grp {
     margin-top: 5%;
     display: grid;
@@ -40,11 +50,11 @@
     margin-top: 30%;
     overflow: auto;
     height: 70vh;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(255, 255, 255);
     /* background-color: grey; */
     border-radius: 20px;
     margin-left: 10%;
-    border: 1px solid rgb(113, 113, 113);
+    /* border: 1px solid rgb(113, 113, 113); */
     text-align: center;
 }
 

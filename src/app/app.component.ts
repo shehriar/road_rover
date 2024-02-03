@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ScrollService } from './services/scroll.service';
 import { ApiService } from './api.service';
+import { LocationService } from './location.service';
 
 @Component({
   selector: 'app-root',

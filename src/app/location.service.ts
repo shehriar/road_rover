@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
+  private locationSet : boolean = false;
   private pickupLocation: string = '';
   private dropoffLocation: string = '';
+  private pickupLocationSubject = new BehaviorSubject<string>('');
 
   private pickupCity: string = '';
   private pickupState: string = '';
@@ -13,8 +16,15 @@ export class LocationService {
   private dropoffCity: string = '';
   private dropoffState: string = '';
 
+  getLocationSet(){
+    return this.locationSet;
+  }
+
   setPickupLocation(location: string) {
+    console.log(location);
     this.pickupLocation = location;
+    this.locationSet = true;
+    this.pickupLocationSubject.next(location);
   }
 
   setDropoffLocation(location: string) {
@@ -23,6 +33,14 @@ export class LocationService {
 
   getPickupLocation(): string {
     return this.pickupLocation;
+  }
+
+  getPickupLocationObservable() {
+    return this.pickupLocationSubject.asObservable();
+  }
+
+  getCurrentPickupLocation(): string {
+    return this.pickupLocationSubject.value;
   }
 
   getDropoffLocation(): string {
