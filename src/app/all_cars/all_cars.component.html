@@ -9,7 +9,7 @@
         <h3>{{vehicle.vehiclemodel}} ({{vehicle.vehicleyear}})</h3>
     </div> -->
     <div class = "car-list-grp right-column">
-        <div *ngFor="let vehicle of filteredVehicles">
+        <div *ngFor="let vehicle of filteredVehicles" (click) = "clickVehicle(vehicle, 'vehicle_select')">
             <img src='assets/all_cars/{{vehicle.vehiclemodel}}.png'>
             <h3>{{vehicle.vehiclemake}} {{vehicle.vehiclemodel}} ({{vehicle.vehicleyear}})</h3>
             <h3>${{vehicle.ratedaily}}/Day</h3>

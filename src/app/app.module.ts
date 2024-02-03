@@ -33,7 +33,8 @@ import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.compo
     AboutComponent,
     ContactComponent,
     AllCarsComponent,
-    VehicleFiltersComponent
+    VehicleFiltersComponent,
+    SearchCarComponent
   ],
   imports: [
     BrowserModule,

@@ -6,10 +6,7 @@
 .left-row{
     display: flex;
     justify-content: left;
-}
-
-.left-row app-date-picker{
-    margin-left: 19.8%;
+    margin-left: 40%;
 }
 
 .left-row button{

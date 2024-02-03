@@ -2,11 +2,10 @@
     <div class = "center-row">
         <app-autocomplete-search label = "Pick Up" locationType="pickup"></app-autocomplete-search>
         <div style = "padding-right: 5%;"></div>
-        <app-autocomplete-search label = "Drop Off" locationType="dropoff"></app-autocomplete-search>
+        <app-date-picker></app-date-picker>
     </div>
 
     <div class = "left-row">
-        <app-date-picker></app-date-picker>
         <div style = "padding-right: 5%;"></div>
         <button (click)="clickButton('all_cars')">Search</button>
     </div>

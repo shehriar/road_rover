@@ -4,6 +4,8 @@ import { LocationService } from '../location.service';
 import { Vehicle } from 'src/app/vehicle.interface';
 import { VehicleFiltersComponent } from '../vehicle_filters/vehicle_filters.component';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { VehicleSelectionService } from 'src/app/vehicle_select.service'
 
 
 @Component({
@@ -14,7 +16,7 @@ import { Observable } from 'rxjs';
 
 export class AllCarsComponent implements OnInit{
     title = 'Autocomplete Search';
-    constructor(private apiService: ApiService, private locationService: LocationService){};
+    constructor(private apiService: ApiService, private locationService: LocationService, private router : Router, private vehicleSelect : VehicleSelectionService){};
 
     allVehicleModels!: Vehicle[];
     allVehiclesFromPickupCity!: Vehicle[];
@@ -31,6 +33,11 @@ export class AllCarsComponent implements OnInit{
         this.dropoffCity = this.locationService.getDropoffCity();
         this.fetchAllVehicles();
         // this.fetchAllVehicleDataFromPickupLocation();
+    }
+
+    clickVehicle(vehicle : Vehicle, path : string){
+      this.vehicleSelect.setSelectedVehicle(vehicle);
+      this.router.navigateByUrl(path);
     }
 
     filterVehiclesByType(selectedType: string): void {
