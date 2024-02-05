@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Vehicle } from 'src/app/vehicle.interface';
+import { Vehicle } from '../interfaces/vehicle.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,5 +11,9 @@ export class VehicleSelectionService {
 
   setSelectedVehicle(vehicle: Vehicle) {
     this.selectedVehicleSubject.next(vehicle);
+  }
+
+  getSelectedVehicle(){
+    return this.selectedVehicle;
   }
 }

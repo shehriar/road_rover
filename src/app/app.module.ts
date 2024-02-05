@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { AllCarsComponent } from './all_cars/all_cars.component';
 import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.component';
+import { SelectedCarComponent } from './selected_car/selected_car.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.compo
     ContactComponent,
     AllCarsComponent,
     VehicleFiltersComponent,
-    SearchCarComponent,
+    SelectedCarComponent
   ],
   imports: [
     BrowserModule,

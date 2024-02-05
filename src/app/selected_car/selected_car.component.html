@@ -1,9 +1,11 @@
-<div #selectedCarComponent style = "margin-top: 10%;">
+<div #selectedCarComponent>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <div class = "row">
-        <img src = "assets/all_cars/{{selectedCar.vehiclemodel}}.png">
-        <div class = "column">
+        <div class = "background-image" style = "background-image: url('assets/skyline.png');">
+            <img style = "margin-top: 30%;" src = "assets/all_cars/{{selectedCar.vehiclemodel}}.png">
+        </div>
+        <div class = "column" style = "margin-top: 15%; margin-left: 5%;">
             <h1>{{selectedCar.vehiclemake}} {{selectedCar.vehiclemodel}}</h1>
             <h2 style = "color: green; font-size: 40px;">${{selectedCar.ratedaily}} <span style = "color: black; font-weight: bold; font-size: 20px;">/day</span></h2>
             <div class = "row">
@@ -11,6 +13,7 @@
                 <h2 style = "color: rgb(209, 180, 11); margin-left: 3%;">{{selectedCar.rating}} ({{selectedCar.reviewCount}} review[s])</h2>
             </div>
             <h2>Pickup Location: {{selectedCar.locationcity}}, {{selectedCar.locationstate}}, {{selectedCar.locationcountry}}</h2>
+            <h2>Dates Booking : {{selectedDateRange.start}} - {{selectedDateRange.end}}</h2>
         </div>
     </div>
 </div>

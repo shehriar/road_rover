@@ -3,7 +3,7 @@
 }
 
 :host-context(.vehicle-filter) mat-form-field {
-    width: 100%;
+    width: 100% !important;
 }
 
 .location-form mat-label{

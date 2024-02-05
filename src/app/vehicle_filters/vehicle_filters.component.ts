@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ApiService } from '../api.service';
-import { LocationService } from '../location.service';
+import { ApiService } from '../services/api.service';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'app-vehicle-filters',

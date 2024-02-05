@@ -2,7 +2,9 @@ import { Component, ElementRef, ViewChild, OnInit, EventEmitter, Output } from '
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router'; 
 import { ScrollService } from '../services/scroll.service';
-import { LocationService } from '../location.service';
+import { LocationService } from '../services/location.service';
+import { DatePickerComponent } from '../date_picker/date_picker.component';
+import { DateRangeService } from '../services/date-range.service';
 
 @Component({
   selector: 'app-car-search',
@@ -21,7 +23,11 @@ export class SearchCarComponent{
 
   @ViewChild('searchCarComponent', { static: false }) searchCarComponent!: ElementRef;
 
-  constructor(private scrollService: ScrollService, private router: Router, private locationService : LocationService) {}
+  @ViewChild(DatePickerComponent, { static: false }) datePickerComponent!: DatePickerComponent;
+  selectedDateRange : any;
+  currentDate = new Date();
+
+  constructor(private scrollService: ScrollService, private router: Router, private locationService : LocationService, private dateRangeService : DateRangeService) {}
 
   ngOnInit() {
     this.scrollService.scrollToCarSearchObservable.subscribe(() => {
@@ -34,6 +40,21 @@ export class SearchCarComponent{
   }
 
   clickButton(path: string) {
-    this.router.navigateByUrl(path);
+    this.datePickerComponent.extractDates();
+    if(this.dateErrors()){
+      this.router.navigateByUrl(path);
+    }
+  }
+
+  dateErrors() : boolean{
+    this.dateRangeService.dateSelected.subscribe(date =>{
+        this.selectedDateRange = date;
+    })
+    var dateSelectedVar = new Date(this.selectedDateRange.start);
+    
+    if(this.currentDate <= dateSelectedVar){
+      return true;
+    }
+    return false;
   }
 }

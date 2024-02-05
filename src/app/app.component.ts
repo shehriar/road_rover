@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ScrollService } from './services/scroll.service';
-import { ApiService } from './api.service';
-import { LocationService } from './location.service';
+import { ApiService } from './services/api.service';
+import { LocationService } from './services/location.service';
 
 @Component({
   selector: 'app-root',

@@ -12,3 +12,9 @@ h1{
     font-size: 40px;
     font-family: 'Courier New', Courier, monospace;
 }
+
+.background-image{
+    height: 80vh; 
+    background-size: contain; 
+    background-repeat: no-repeat;
+}

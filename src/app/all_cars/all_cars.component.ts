@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
-import { LocationService } from '../location.service';
-import { Vehicle } from 'src/app/vehicle.interface';
+import { ApiService } from '../services/api.service';
+import { LocationService } from '../services/location.service';
+import { Vehicle } from '../interfaces/vehicle.interface';
 import { VehicleFiltersComponent } from '../vehicle_filters/vehicle_filters.component';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { VehicleSelectionService } from 'src/app/vehicle_select.service'
+import { VehicleSelectionService } from '../services/vehicle_select.service'
 
 
 @Component({
