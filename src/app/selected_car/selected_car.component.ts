@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Vehicle } from '../vehicle.interface';
 import { VehicleSelectionService } from '../vehicle_select.service';
 
@@ -13,11 +13,11 @@ export class SelectedCarComponent{
     constructor(private selectedVehicle : VehicleSelectionService) {}
 
     ngOnInit(){
-        this.selectedVehicle.selectedVehicle.subscribe(vehicle => {
-            if (vehicle) {
-              this.selectedCar = vehicle;
-            }
-          });
+      this.selectedVehicle.selectedVehicle.subscribe(vehicle => {
+        if (vehicle) {
+          this.selectedCar = vehicle;
+        }
+      });
     }
 
     setVehicle(vehicle : Vehicle){

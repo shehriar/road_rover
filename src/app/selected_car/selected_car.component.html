@@ -1,9 +1,16 @@
 <div #selectedCarComponent style = "margin-top: 10%;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <div class = "row">
         <img src = "assets/all_cars/{{selectedCar.vehiclemodel}}.png">
         <div class = "column">
             <h1>{{selectedCar.vehiclemake}} {{selectedCar.vehiclemodel}}</h1>
             <h2 style = "color: green; font-size: 40px;">${{selectedCar.ratedaily}} <span style = "color: black; font-weight: bold; font-size: 20px;">/day</span></h2>
+            <div class = "row">
+                <span class="fa fa-star checked" style = "margin-top: 2.5%; color:rgb(209, 180, 11);"></span>
+                <h2 style = "color: rgb(209, 180, 11); margin-left: 3%;">{{selectedCar.rating}} ({{selectedCar.reviewCount}} review[s])</h2>
+            </div>
+            <h2>Pickup Location: {{selectedCar.locationcity}}, {{selectedCar.locationstate}}, {{selectedCar.locationcountry}}</h2>
         </div>
     </div>
 </div>

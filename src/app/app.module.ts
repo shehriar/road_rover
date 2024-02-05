@@ -34,7 +34,7 @@ import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.compo
     ContactComponent,
     AllCarsComponent,
     VehicleFiltersComponent,
-    SearchCarComponent
+    SearchCarComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,7 @@ import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.compo
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
