@@ -69,7 +69,7 @@
 
 .top-page {
     display: flex;
-    justify-content: left;
+    justify-content: flex-end;
 }
 
 .top-page img{
@@ -81,13 +81,16 @@
 
 .top-page-buttons {
     position: fixed;
+    /* position:initial; */
     /* position: absolute; */
+    /* position: sticky; */
     top: 0;
-    left: 100%; /* Center relative to the viewport */
-    transform: translateX(-50%); /* Shift it back to truly center it */
+    left: 100%;
+    transform: translateX(-50%);
     width: 100%; 
     z-index: 1000;
     background-color: transparent;
+    margin-left: 15%;
 }
 
 .top-page-buttons button {

@@ -116,7 +116,7 @@ export class AllCarsComponent implements OnInit{
         this.filteredVehicles = this.filteredVehicles.filter(vehicle => this.currentMakeFilter.includes(vehicle.vehiclemake));
       }
 
-      if(this.pickupCitySelected){
+      if(this.pickupCitySelected && this.pickupCitySelected != "All Vehicles"){
         console.log(this.pickupCitySelected);
         this.filteredVehicles = this.filteredVehicles.filter(vehicle => vehicle.locationcity === this.pickupCitySelected);
       }

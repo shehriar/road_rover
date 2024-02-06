@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Vehicle } from '../interfaces/vehicle.interface';
 import { VehicleSelectionService } from '../services/vehicle_select.service';
 import { DateRangeService } from '../services/date-range.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selected-car',
@@ -13,7 +14,7 @@ export class SelectedCarComponent{
     selectedCar! : Vehicle;
     selectedDateRange : any;
     reviewLabel:any;
-    constructor(private selectedVehicle : VehicleSelectionService, private dateRangeService : DateRangeService) {}
+    constructor(private selectedVehicle : VehicleSelectionService, private dateRangeService : DateRangeService, private router : Router) {}
 
     ngOnInit(){
       this.dateRangeService.dateSelected.subscribe(date =>{
@@ -34,5 +35,9 @@ export class SelectedCarComponent{
 
     setVehicle(vehicle : Vehicle){
         this.selectedCar = vehicle;
+    }
+
+    clickButton(path : string){
+      this.router.navigateByUrl(path);
     }
 }

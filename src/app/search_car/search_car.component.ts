@@ -18,6 +18,8 @@ export class SearchCarComponent{
     end: new FormControl()
   });
 
+  isDateError! : boolean;
+
   pickupCitySelected : string = "";
   @Output() selectedLocation = new EventEmitter<string>();
 
@@ -41,20 +43,22 @@ export class SearchCarComponent{
 
   clickButton(path: string) {
     this.datePickerComponent.extractDates();
-    if(this.dateErrors()){
+    if(!this.dateErrors()){
       this.router.navigateByUrl(path);
     }
   }
 
   dateErrors() : boolean{
+    this.isDateError = true;
     this.dateRangeService.dateSelected.subscribe(date =>{
         this.selectedDateRange = date;
     })
     var dateSelectedVar = new Date(this.selectedDateRange.start);
-    
+
     if(this.currentDate <= dateSelectedVar){
-      return true;
+      this.isDateError = false;
+      return this.isDateError;
     }
-    return false;
+    return this.isDateError;
   }
 }

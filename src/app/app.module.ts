@@ -23,6 +23,8 @@ import { AllCarsComponent } from './all_cars/all_cars.component';
 import { VehicleFiltersComponent } from './vehicle_filters/vehicle_filters.component';
 import { SelectedCarComponent } from './selected_car/selected_car.component';
 import { RatingsComponent } from './ratings/ratings.component';
+import { BookingComponent } from './booking/booking/booking.component';
+import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation/booking-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { RatingsComponent } from './ratings/ratings.component';
     AllCarsComponent,
     VehicleFiltersComponent,
     SelectedCarComponent,
-    RatingsComponent
+    RatingsComponent,
+    BookingComponent,
+    BookingConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,3 @@
-<div class = "top-page">
-    <div class = "top-page-buttons">
-      <button (click) = "onHomeClick()">Home</button>
-      <button (click) = "onCarListClick()">Vehicle Models</button>
-      <button (click) = "onAboutClick()">About</button>
-      <button (click) = "onContactClick()">Contact</button>
-    </div>
-</div>
-
 <div class = "home-car" #homeComponent>
     <div class = "home-promo-text">
         <h3>Plan your trip now!</h3>
@@ -15,7 +6,7 @@
         <div class = "left-row">
             <button class = "book-button" (click)="onBookARideClick()">Book a Ride!</button>
             <div style = "padding-right: 7%;"></div>
-            <button class = "learn-more-button">Learn More</button>
+            <button class = "learn-more-button" (click) = "onAboutClick()">Learn More</button>
         </div>
     </div>
     <img src="assets/home_image.png">

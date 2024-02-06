@@ -9,6 +9,11 @@
     margin-left: 40%;
 }
 
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
 .left-row button{
     width: 200px;
     height: 60px;
