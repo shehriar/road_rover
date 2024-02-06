@@ -10,7 +10,7 @@
             <h2 style = "color: green; font-size: 40px;">${{selectedCar.ratedaily}} <span style = "color: black; font-weight: bold; font-size: 20px;">/day</span></h2>
             <div class = "row">
                 <span class="fa fa-star checked" style = "margin-top: 2.5%; color:rgb(209, 180, 11);"></span>
-                <h2 style = "color: rgb(209, 180, 11); margin-left: 3%;">{{selectedCar.rating}} ({{selectedCar.reviewCount}} review[s])</h2>
+                <h2 style = "color: rgb(209, 180, 11); margin-left: 3%;">{{selectedCar.rating}} ({{selectedCar.reviewCount}} {{reviewLabel}})</h2>
             </div>
             <h2>Pickup Location: {{selectedCar.locationcity}}, {{selectedCar.locationstate}}, {{selectedCar.locationcountry}}</h2>
             <h2>Dates Booking : {{selectedDateRange.start}} - {{selectedDateRange.end}}</h2>

@@ -58,6 +58,7 @@ export class AutocompleteSearchComponent implements OnInit{
   updateValue(value: string){
     if(value){
       if(this.locationType == 'pickup'){
+        console.log(value)
         this.locationService.setPickupLocation(value);
       }
       else{

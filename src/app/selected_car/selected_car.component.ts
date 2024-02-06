@@ -12,6 +12,7 @@ export class SelectedCarComponent{
     title = 'Selected Car';
     selectedCar! : Vehicle;
     selectedDateRange : any;
+    reviewLabel:any;
     constructor(private selectedVehicle : VehicleSelectionService, private dateRangeService : DateRangeService) {}
 
     ngOnInit(){
@@ -23,6 +24,11 @@ export class SelectedCarComponent{
           this.selectedCar = vehicle;
         }
       });
+      if(this.selectedCar.reviewCount > 1){
+        this.reviewLabel = "Reviews";
+      } else{
+        this.reviewLabel = "Review"
+      }
       console.log(this.selectedDateRange);
     }
 

@@ -81,6 +81,7 @@
 
 .top-page-buttons {
     position: fixed;
+    /* position: absolute; */
     top: 0;
     left: 100%; /* Center relative to the viewport */
     transform: translateX(-50%); /* Shift it back to truly center it */

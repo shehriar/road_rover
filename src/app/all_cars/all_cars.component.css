@@ -43,7 +43,7 @@
 
 .container{
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 10fr 1fr 60fr;
 }
 
 .left-column {
@@ -52,10 +52,20 @@
     height: 70vh;
     background-color: rgb(255, 255, 255);
     /* background-color: grey; */
-    border-radius: 20px;
+    /* border-radius: 20px; */
     margin-left: 10%;
     /* border: 1px solid rgb(113, 113, 113); */
     text-align: center;
+    /* border-right: 1px solid black; */
+}
+
+.vl{
+    margin-left: 100%;
+    width: 1px;
+    height: 90%;
+    border-color: rgb(233, 233, 233);
+    background-color: rgb(233, 233, 233);
+    margin-top: 50%;
 }
 
 .right-column {
@@ -66,6 +76,7 @@
     /* background-color: grey; */
     /* background-color: rgb(228, 228, 228); */
     background-color: white;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    /* border-top-right-radius: 20px; */
+    /* border-bottom-right-radius: 20px; */
+    /* border-left: 1px solid black; */
 }
