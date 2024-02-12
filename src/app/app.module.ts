@@ -25,6 +25,7 @@ import { SelectedCarComponent } from './selected_car/selected_car.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { BookingComponent } from './booking/booking/booking.component';
 import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation/booking-confirmation.component';
+import { OurTeamComponent } from './our_team/our_team.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BookingConfirmationComponent } from './booking-confirmation/booking-con
     SelectedCarComponent,
     RatingsComponent,
     BookingComponent,
-    BookingConfirmationComponent
+    BookingConfirmationComponent,
+    OurTeamComponent
   ],
   imports: [
     BrowserModule,
